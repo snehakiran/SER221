@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		658CBAA919EBAF51009A3216 /* madlib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 658CBAA719EBAF51009A3216 /* madlib.cpp */; };
-		658CBAAA19EBAF51009A3216 /* rps.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 658CBAA819EBAF51009A3216 /* rps.cpp */; };
+		655AC71419EBD2E10010A72F /* madlib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 655AC71319EBD2E10010A72F /* madlib.cpp */; };
+		655AC71619EBD3030010A72F /* rps.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 655AC71519EBD3030010A72F /* rps.cpp */; };
+		655AC71819EBD32C0010A72F /* pigGame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 655AC71719EBD32C0010A72F /* pigGame.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,10 +25,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		655AC71319EBD2E10010A72F /* madlib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = madlib.cpp; sourceTree = "<group>"; };
+		655AC71519EBD3030010A72F /* rps.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rps.cpp; sourceTree = "<group>"; };
+		655AC71719EBD32C0010A72F /* pigGame.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = pigGame.cpp; sourceTree = "<group>"; };
 		658CBA9C19EBAF2C009A3216 /* Assign1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Assign1; sourceTree = BUILT_PRODUCTS_DIR; };
 		658CBAA619EBAF51009A3216 /* Assign1.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = Assign1.pdf; sourceTree = "<group>"; };
-		658CBAA719EBAF51009A3216 /* madlib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = madlib.cpp; path = ../madlib.cpp; sourceTree = "<group>"; };
-		658CBAA819EBAF51009A3216 /* rps.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rps.cpp; path = ../rps.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +47,9 @@
 			isa = PBXGroup;
 			children = (
 				658CBAA619EBAF51009A3216 /* Assign1.pdf */,
-				658CBA9E19EBAF2C009A3216 /* Assign1 */,
+				655AC71319EBD2E10010A72F /* madlib.cpp */,
+				655AC71519EBD3030010A72F /* rps.cpp */,
+				655AC71719EBD32C0010A72F /* pigGame.cpp */,
 				658CBA9D19EBAF2C009A3216 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,15 +60,6 @@
 				658CBA9C19EBAF2C009A3216 /* Assign1 */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		658CBA9E19EBAF2C009A3216 /* Assign1 */ = {
-			isa = PBXGroup;
-			children = (
-				658CBAA719EBAF51009A3216 /* madlib.cpp */,
-				658CBAA819EBAF51009A3216 /* rps.cpp */,
-			);
-			path = Assign1;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,8 +118,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				658CBAA919EBAF51009A3216 /* madlib.cpp in Sources */,
-				658CBAAA19EBAF51009A3216 /* rps.cpp in Sources */,
+				655AC71419EBD2E10010A72F /* madlib.cpp in Sources */,
+				655AC71819EBD32C0010A72F /* pigGame.cpp in Sources */,
+				655AC71619EBD3030010A72F /* rps.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,6 +234,7 @@
 				658CBAA519EBAF2C009A3216 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -35,7 +35,7 @@ Write a program that plays the game of Mad Lib. Your program should prompt the u
 
 using namespace std;
 
-int main() {
+void madlib() {
 
     string instructorName, userName, food, number, adjective, color, animal;
 

@@ -32,8 +32,88 @@
  */
 
 #include <iostream>
+#include <cstdlib>
+#include <cctype>
 
+using namespace std;
 
-void pigGame() {
-    
+int rollDice() {
+    return rand()%(6-1+1) + 1;
+}
+
+int humanTurn() {
+    int points = 0;
+    char currentRoll = 0;
+    do {
+        currentRoll = rollDice();
+        switch (currentRoll) {
+            case 1:
+                cout << "\tYou rolled a 1, and lost your turn.\n";
+                return 0;
+            default:
+                cout << "\tYou rolled a ";
+                cout << (int)currentRoll << ".\n";
+                points += currentRoll;
+                break;
+        }
+        cout << "\tEnter (R)oll or (H)old:\t";
+        string input;
+        cin >> input;
+        if (tolower(input.front()) == 'h') {
+            return points;
+        }
+    } while (true);
+}
+
+int computerTurn() {
+    int points = 0;
+    char currentRoll = 0;
+    do {
+        currentRoll = rollDice();
+        switch (currentRoll) {
+            case 1:
+                cout << "\tComputer rolled a 1, and lost it's turn.\n";
+                return 0;
+            default:
+                cout << "\tComputer rolled a ";
+                cout << (int)currentRoll << ".\n";
+                points += currentRoll;
+                break;
+        }
+    } while (points < 20);
+    return points;
+}
+
+int pigGame() {
+    string input;
+    int humanTotalPoints = 0;
+    int computerTotalPoints = 0;
+    int turnIndex = 0;
+
+    while (true) {
+        turnIndex += 1;
+
+        cout << "Turn " << turnIndex << "\n";
+
+        cout << "\nPlayer's turn:\n";
+        humanTotalPoints += humanTurn();
+        cout << "\nPlayer's total: ";
+        cout << humanTotalPoints << "\n";
+
+        cout << "\nComputer's turn:\n";
+        computerTotalPoints += computerTurn();
+        cout << "\nComputer's total: ";
+        cout << computerTotalPoints << "\n";
+
+        cout << "\nEnd of turn " << turnIndex << "\n\n\n";
+
+        if (humanTotalPoints > 100) {
+            cout << "\n\nPlayer won with:\t" << humanTotalPoints;
+            return 1;
+        }
+        if (computerTotalPoints > 100) {
+            cout << "\n\nComputer won with:\t" << computerTotalPoints << "\n";
+            return 1;
+        }
+    }
 }

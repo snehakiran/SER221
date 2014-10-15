@@ -36,7 +36,7 @@ Write a program to score the paper-rock-scissor game. Each of the two players ty
 
 using namespace std;
 
-int main() {
+void rps() {
     int playAgain = 0;
 
     unsigned int playerOneScore = 0;
@@ -117,7 +117,7 @@ int main() {
                     playAgain = 1;
                     break;
                 default:
-                return 1;
+                return;
         }
     } while(playAgain);
 }

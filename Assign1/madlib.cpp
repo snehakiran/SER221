@@ -5,10 +5,10 @@
 //  Created by Derek R Castile on 10/12/14.
 //  Copyright (c) 2014 DRC Ventures. All rights reserved.
 
-
 /*
   1. Madlib (20 points)
-Write a program that plays the game of Mad Lib. Your program should prompt the user to enter the following strings:
+Write a program that plays the game of Mad Lib. Your program should prompt the
+user to enter the following strings:
     • The first or last name of your Instructor
     • Your name
     • A food
@@ -16,8 +16,9 @@ Write a program that plays the game of Mad Lib. Your program should prompt the u
     • An adjective
     • A color
     • An animal
-    
- After getting the strings as input, they should be substituted into the story below.
+
+ After getting the strings as input, they should be substituted into the story
+below.
     The resulting story should be displayed as the output.
 
                 Dear Professor [Instructor Name],
@@ -37,40 +38,42 @@ using namespace std;
 
 void madlib() {
 
-    string instructorName, userName, food, number, adjective, color, animal;
+  string instructorName, userName, food, number, adjective, color, animal;
 
-    cout<<"Ready for a madlib?\n\n";
+  cout << "Ready for a madlib?\n\n";
 
-    cout<<"\nFirst or Last name of your Instructor:\t";
-    cin>>instructorName;
+  cout << "\nFirst or Last name of your Instructor:\t";
+  cin >> instructorName;
 
-    cout<<"\nYour name:\t";
-    cin>>userName;
+  cout << "\nYour name:\t";
+  cin >> userName;
 
-    cout<<"\nA food:\t";
-    cin>>food;
+  cout << "\nA food:\t";
+  cin >> food;
 
-    cout<<"\nA number between 100 and 120:\t";
-    cin>>number;
+  cout << "\nA number between 100 and 120:\t";
+  cin >> number;
 
-    cout << "\nAn adjective:\t";
-    cin >> adjective;
+  cout << "\nAn adjective:\t";
+  cin >> adjective;
 
-    cout << "\nA color:\t";
-    cin >> color;
+  cout << "\nA color:\t";
+  cin >> color;
 
-    cout << "\nAn animal:\t";
-    cin >> animal;
+  cout << "\nAn animal:\t";
+  cin >> animal;
 
-    cout << "\n\n\n";
+  cout << "\n\n\n";
 
-    cout << "\tDear Professor " <<instructorName <<",\n";
-    cout << "I am sorry that I am unable to turn in my homework at this time.\n";
-    cout << "First, I ate a rotten "<< food << ", which made me turn " << color << " and\n";
-    cout << "extremely ill. I came down with a fever of " << number << ".\n";
-    cout << "Next, my " << adjective << " pet " << animal << " must have smelled the remains\n";
-    cout << "of the " << food << " on my homework, because he ate it. I am currently\n";
-    cout << "rewriting my homework and hope you will accept it late.\n";
-    cout << "\n\tSincerely,\n\t" <<userName << "\n\n\n";
-
+  cout << "\tDear Professor " << instructorName << ",\n";
+  cout << "I am sorry that I am unable to turn in my homework at this time.\n";
+  cout << "First, I ate a rotten " << food << ", which made me turn " << color
+       << " and\n";
+  cout << "extremely ill. I came down with a fever of " << number << ".\n";
+  cout << "Next, my " << adjective << " pet " << animal
+       << " must have smelled the remains\n";
+  cout << "of the " << food
+       << " on my homework, because he ate it. I am currently\n";
+  cout << "rewriting my homework and hope you will accept it late.\n";
+  cout << "\n\tSincerely,\n\t" << userName << "\n\n\n";
 }

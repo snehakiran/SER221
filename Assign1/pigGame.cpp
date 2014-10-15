@@ -62,14 +62,14 @@ int humanTurn() {
   do {
     currentRoll = rollDice();
     switch (currentRoll) {
-    case 1:
-      cout << "\tYou rolled a 1, and lost your turn.\n";
-      return 0;
-    default:
-      cout << "\tYou rolled a ";
-      cout << (int)currentRoll << ".\n";
-      points += currentRoll;
-      break;
+      case 1:
+        cout << "\tYou rolled a 1, and lost your turn.\n";
+        return 0;
+      default:
+        cout << "\tYou rolled a ";
+        cout << (int)currentRoll << ".\n";
+        points += currentRoll;
+        break;
     }
     cout << "\tEnter (R)oll or (H)old:\t";
     string input;
@@ -86,14 +86,14 @@ int computerTurn() {
   do {
     currentRoll = rollDice();
     switch (currentRoll) {
-    case 1:
-      cout << "\tComputer rolled a 1, and lost it's turn.\n";
-      return 0;
-    default:
-      cout << "\tComputer rolled a ";
-      cout << (int)currentRoll << ".\n";
-      points += currentRoll;
-      break;
+      case 1:
+        cout << "\tComputer rolled a 1, and lost it's turn.\n";
+        return 0;
+      default:
+        cout << "\tComputer rolled a ";
+        cout << (int)currentRoll << ".\n";
+        points += currentRoll;
+        break;
     }
   } while (points < 20);
   return points;

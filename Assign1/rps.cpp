@@ -55,71 +55,71 @@ void rps() {
     cin >> input2;
     input2 = tolower(input2);
     switch (input1) {
-    case 'p':
-      switch (input2) {
-      case 'r':
-        cout << "Player 1 wins.";
-        playerOneScore += 1;
-        break;
-      case 's':
-        cout << "Player 2 wins.";
-        playerTwoScore += 1;
-        break;
       case 'p':
-        cout << "Tie.";
-        break;
-      default:
-        break;
-      }
-      break;
-    case 'r':
-      switch (input2) {
-      case 's':
-        cout << "Player 1 wins.";
-        playerOneScore += 1;
-        break;
-      case 'p':
-        cout << "Player 2 wins.";
-        playerTwoScore += 1;
+        switch (input2) {
+          case 'r':
+            cout << "Player 1 wins.";
+            playerOneScore += 1;
+            break;
+          case 's':
+            cout << "Player 2 wins.";
+            playerTwoScore += 1;
+            break;
+          case 'p':
+            cout << "Tie.";
+            break;
+          default:
+            break;
+        }
         break;
       case 'r':
-        cout << "Tie.";
-        break;
-      default:
-        break;
-      }
-      break;
-    case 's':
-      switch (input2) {
-      case 'p':
-        cout << "Player 1 wins.";
-        playerOneScore += 1;
-        break;
-      case 'r':
-        cout << "Player 2 wins.";
-        playerTwoScore += 1;
+        switch (input2) {
+          case 's':
+            cout << "Player 1 wins.";
+            playerOneScore += 1;
+            break;
+          case 'p':
+            cout << "Player 2 wins.";
+            playerTwoScore += 1;
+            break;
+          case 'r':
+            cout << "Tie.";
+            break;
+          default:
+            break;
+        }
         break;
       case 's':
-        cout << "Tie.";
+        switch (input2) {
+          case 'p':
+            cout << "Player 1 wins.";
+            playerOneScore += 1;
+            break;
+          case 'r':
+            cout << "Player 2 wins.";
+            playerTwoScore += 1;
+            break;
+          case 's':
+            cout << "Tie.";
+            break;
+          default:
+            break;
+        }
         break;
       default:
+        cout << "Invalid entry\n";
         break;
-      }
-      break;
-    default:
-      cout << "Invalid entry\n";
-      break;
     }
     cout << "\nThanks!";
     cout << "\nPlay again? Y/y continues, other quits: ";
     cin >> input1;
     input1 = tolower(input1);
     switch (input1) {
-    case 'y':
-      playAgain = 1;
-      break;
-    default:
-      return;
+      case 'y':
+        playAgain = 1;
+        break;
+      default:
+        return;
     }
   } while (playAgain);
 }

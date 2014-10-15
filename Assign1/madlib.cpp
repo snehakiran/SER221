@@ -37,7 +37,6 @@ below.
 using namespace std;
 
 void madlib() {
-
   string instructorName, userName, food, number, adjective, color, animal;
 
   cout << "Ready for a madlib?\n\n";

@@ -56,12 +56,17 @@ using namespace std;
 
 int rollDice() { return rand() % (6 - 1 + 1) + 1; }
 
-int humanTurn() {
-  int points = 0;
-  char currentRoll = 0;
-  do {
-    currentRoll = rollDice();
-    switch (currentRoll) {
+enum PlayerType { USER, COMPUTER };
+class Player {
+private:
+  int totalPoints = 0;
+  PlayerType playerType;
+  int humanTurn() {
+    int points = 0;
+    char currentRoll = 0;
+    do {
+      currentRoll = rollDice();
+      switch (currentRoll) {
       case 1:
         cout << "\tYou rolled a 1, and lost your turn.\n";
         return 0;
@@ -70,22 +75,21 @@ int humanTurn() {
         cout << (int)currentRoll << ".\n";
         points += currentRoll;
         break;
-    }
-    cout << "\tEnter (R)oll or (H)old:\t";
-    string input;
-    cin >> input;
-    if (tolower(input.front()) == 'h') {
-      return points;
-    }
-  } while (true);
-}
-
-int computerTurn() {
-  int points = 0;
-  char currentRoll = 0;
-  do {
-    currentRoll = rollDice();
-    switch (currentRoll) {
+      }
+      cout << "\tEnter (R)oll or (H)old:\t";
+      string input;
+      cin >> input;
+      if (tolower(input.front()) == 'h') {
+        return points;
+      }
+    } while (true);
+  }
+  int computerTurn() {
+    int points = 0;
+    char currentRoll = 0;
+    do {
+      currentRoll = rollDice();
+      switch (currentRoll) {
       case 1:
         cout << "\tComputer rolled a 1, and lost it's turn.\n";
         return 0;
@@ -94,15 +98,40 @@ int computerTurn() {
         cout << (int)currentRoll << ".\n";
         points += currentRoll;
         break;
+      }
+    } while (points < 20);
+    return points;
+  };
+
+public:
+  Player(PlayerType pPlayerType) { playerType = pPlayerType; };
+  int getTotalPoints() { return totalPoints; };
+  int takeTurn() {
+    int newPoints = 0;
+    switch (playerType) {
+    case USER:
+      newPoints = humanTurn();
+      totalPoints += newPoints;
+      return newPoints;
+    case COMPUTER:
+      newPoints = computerTurn();
+      totalPoints += newPoints;
+      return newPoints;
     }
-  } while (points < 20);
-  return points;
-}
+  };
+
+  bool winner() {
+    if (totalPoints > 100) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+};
 
 int pigGame() {
-  string input;
-  int humanTotalPoints = 0;
-  int computerTotalPoints = 0;
+  Player one(USER);
+  Player two(COMPUTER);
   int turnIndex = 0;
 
   while (true) {
@@ -111,23 +140,23 @@ int pigGame() {
     cout << "Turn " << turnIndex << "\n";
 
     cout << "\nPlayer's turn:\n";
-    humanTotalPoints += humanTurn();
+    cout << one.takeTurn();
     cout << "\nPlayer's total: ";
-    cout << humanTotalPoints << "\n";
+    cout << one.getTotalPoints() << "\n";
 
     cout << "\nComputer's turn:\n";
-    computerTotalPoints += computerTurn();
+    two.takeTurn();
     cout << "\nComputer's total: ";
-    cout << computerTotalPoints << "\n";
+    cout << two.getTotalPoints() << "\n";
 
     cout << "\nEnd of turn " << turnIndex << "\n\n\n";
 
-    if (humanTotalPoints > 100) {
-      cout << "\n\nPlayer won with:\t" << humanTotalPoints;
+    if (one.winner()) {
+      cout << "\n\nPlayer won with:\t" << one.getTotalPoints();
       return 1;
     }
-    if (computerTotalPoints > 100) {
-      cout << "\n\nComputer won with:\t" << computerTotalPoints << "\n";
+    if (two.winner()) {
+      cout << "\n\nComputer won with:\t" << two.getTotalPoints() << "\n";
       return 1;
     }
   }

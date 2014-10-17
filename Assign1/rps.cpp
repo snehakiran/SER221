@@ -146,7 +146,7 @@ public:
   }
 };
 
-int main() {
+int rps() {
   RockPaperScissors rps;
   do {
     rps.playRockPaperScissors();

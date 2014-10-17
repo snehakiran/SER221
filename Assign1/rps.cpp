@@ -34,92 +34,122 @@ after each play.
 
 #include <iostream>
 #include <cctype>
-#include <string.h>
+#include <string>
 
 using namespace std;
 
-void rps() {
-  int playAgain = 0;
+enum Sign { PAPER, ROCK, SCISSORS };
 
-  unsigned int playerOneScore = 0;
-  unsigned int playerTwoScore = 0;
+class Player {
+private:
+  Sign sign;
+  int totalPoints = 0;
+  string name;
 
-  char input1;
-  char input2;
+  Sign setSign(char c) {
+    c = tolower(c);
+    switch (c) {
+    case 'p':
+      sign = PAPER;
+      break;
+    case 'r':
+      sign = ROCK;
+      break;
+    case 's':
+      sign = SCISSORS;
+      break;
+    }
+    return sign;
+  };
 
+public:
+  Player(string pName) { name = pName; };
+  int incrementTotalPoints() {
+    totalPoints += 1;
+    cout << "\n" << name << " wins.";
+    return totalPoints;
+  }
+  void takeTurn() {
+    string s;
+    cout << "\n" << name
+         << ": Please enter either (R)ock, (P)aper, or (S)cissors: ";
+    cin >> s;
+    setSign(tolower(s[0]));
+  };
+  Sign getSign() { return sign; }
+  int compareSign(Sign signToCompare) {
+    switch (sign) {
+    case PAPER:
+      switch (signToCompare) {
+      case PAPER:
+        return 0;
+      case ROCK:
+        return 1;
+      case SCISSORS:
+        return -1;
+      }
+    case ROCK:
+      switch (signToCompare) {
+      case PAPER:
+        return -1;
+      case ROCK:
+        return 0;
+      case SCISSORS:
+        return 1;
+      }
+    case SCISSORS:
+      switch (signToCompare) {
+      case PAPER:
+        return 1;
+      case ROCK:
+        return -1;
+      case SCISSORS:
+        return 0;
+      }
+    }
+  };
+};
+
+class RockPaperScissors {
+  Player playerOne{"Player 1"}, playerTwo{"Player 2"};
+
+public:
+  void playRockPaperScissors() {
+    playerOne.takeTurn();
+    playerTwo.takeTurn();
+    switch (playerOne.compareSign(playerTwo.getSign())) {
+    case 1:
+      playerOne.incrementTotalPoints();
+      break;
+    case 0:
+      cout << "\n"
+           << "Tie.";
+      break;
+    case -1:
+      playerTwo.incrementTotalPoints();
+      break;
+    }
+  };
+  bool playAgain() {
+    string s;
+    cout << "\n"
+         << "Thanks!";
+    cout << "\n"
+         << "Play again? Y/y continues, other quits: ";
+    cin >> s;
+    for (int i = 0; i < s.length(); i++) {
+      if (tolower(s[i]) == 'y') {
+        return true;
+      }
+    }
+    return false;
+  }
+};
+
+int main() {
+  RockPaperScissors rps;
   do {
-    cout << "\nPlayer 1: Please enter either (R)ock, (P)aper, or (S)cissors: ";
-    cin >> input1;
-    input1 = tolower(input1);
-    cout << "\nPlayer 2: Please enter either (R)ock, (P)aper, or (S)cissors: ";
-    cin >> input2;
-    input2 = tolower(input2);
-    switch (input1) {
-      case 'p':
-        switch (input2) {
-          case 'r':
-            cout << "Player 1 wins.";
-            playerOneScore += 1;
-            break;
-          case 's':
-            cout << "Player 2 wins.";
-            playerTwoScore += 1;
-            break;
-          case 'p':
-            cout << "Tie.";
-            break;
-          default:
-            break;
-        }
-        break;
-      case 'r':
-        switch (input2) {
-          case 's':
-            cout << "Player 1 wins.";
-            playerOneScore += 1;
-            break;
-          case 'p':
-            cout << "Player 2 wins.";
-            playerTwoScore += 1;
-            break;
-          case 'r':
-            cout << "Tie.";
-            break;
-          default:
-            break;
-        }
-        break;
-      case 's':
-        switch (input2) {
-          case 'p':
-            cout << "Player 1 wins.";
-            playerOneScore += 1;
-            break;
-          case 'r':
-            cout << "Player 2 wins.";
-            playerTwoScore += 1;
-            break;
-          case 's':
-            cout << "Tie.";
-            break;
-          default:
-            break;
-        }
-        break;
-      default:
-        cout << "Invalid entry\n";
-        break;
-    }
-    cout << "\nThanks!";
-    cout << "\nPlay again? Y/y continues, other quits: ";
-    cin >> input1;
-    input1 = tolower(input1);
-    switch (input1) {
-      case 'y':
-        playAgain = 1;
-        break;
-      default:
-        return;
-    }
-  } while (playAgain);
+    rps.playRockPaperScissors();
+  } while (rps.playAgain());
+  return 1;
 }
